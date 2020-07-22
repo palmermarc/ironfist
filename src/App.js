@@ -1,14 +1,54 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import { connect } from 'react-redux';
+import {withRouter} from "react-router";
+import * as actions from "./_actions/actions.authentication";
+import {bindActionCreators} from "redux";
+import { createBrowserHistory } from 'history'
+
+import SiteHeader from './containers/SiteHeader';
+import Roster from './containers/Roster';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-    <SiteHeader />
-    </div>
-  );
+const history = createBrowserHistory();
+
+class App extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+  }
+
+  componentWillMount() {
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <SiteHeader />
+        <Router history={history}>
+          <Switch>
+            <Route path="/">
+              <Roster />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+    )
+  }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return state;
+}
+
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

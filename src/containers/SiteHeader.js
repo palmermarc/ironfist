@@ -3,14 +3,10 @@ import { Menu, Sidebar, Icon } from 'semantic-ui-react'
 import logo from '../logo.svg';
 
 const SiteHeader = () => {
-  const [activeItem, visible, setVisible] = React.useState(false)
-
-  const handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
   return (
     <Sidebar as={Menu} animation='overlay' icon='labeled' inverted vertical visible width='thin' >
       <img src={logo} className="App-logo" alt="logo" />
-      <Menu.Item active={activeItem === 'roster'}>
+      <Menu.Item>
         <Icon name="dashboard" />
         Summary
       </Menu.Item>
