@@ -1,24 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
-import { Button, Segment, Form, Grid } from 'semantic-ui-react';
+import { Button, Segment, Form, Grid, Input } from 'semantic-ui-react';
 import bg from '../assets/images/stormwind.jpg';
+import logo from "../logo.svg";
 
 class Login extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = this.getInitialState();
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   getInitialState() {
     return {
-      currentFilters: {},
-      currentPage: 1,
-      copies: [],
-      totalCount: 0,
-      totalPages: 1,
-      loading: false,
-      niceName: 'Members'
+      client_id: '',
+      client_secret: '',
+      submitted: false,
+    }
+  }
+
+  handleChange(e) {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.setState({submitted: true});
+    const {username, password} = this.state;
+    if (username && password) {
+      this.props.actions.authenticateUser(username, password);
     }
   }
 
@@ -37,12 +51,17 @@ class Login extends React.Component {
         <div class="login-wrapper-overlay"></div>
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
-            <Form size='large'>
+            <Form onSubmit={this.handleSubmit}>
               <Segment stacked>
-                <Form.Input fluid icon='user' iconPosition='left' placeholder='Client ID' />
-                <Form.Input fluid icon='lock' iconPosition='left' placeholder='Client Secret' type='password' />
+                <img src={logo} className="login-logo" alt="logo" />
+                <Form.Field>
+                  <Input type="client_id" name="client_id" value={this.state.client_id} onChange={this.handleChange} placeholder="Client ID" />
+                </Form.Field>
+                <Form.Field>
+                  <Input type="client_secret" name="client_secret" value={this.state.client_secret} onChange={this.handleChange} placeholder="Client Secret" />
+                </Form.Field>
 
-                <Button fluid size='large'>Authenticate</Button>
+                <Form.Field fluid control={Button}>Login</Form.Field>
               </Segment>
             </Form>
           </Grid.Column>

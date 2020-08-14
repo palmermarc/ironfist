@@ -16,11 +16,21 @@ const history = createBrowserHistory();
 
 class App extends React.Component {
   constructor(props, context) {
-    super(props, context);
+    super(props);
   }
 
   componentWillMount() {
+    let token = sessionStorage.getItem("marcoPromoToken");
+
+    if ( token !== null ) {
+      console.log('We need to check the token...');
+      //this.props.actions.checkToken(token);
+    } else {
+      history.push('/login/');
+    }
   }
+
+
 
   render() {
     return (
