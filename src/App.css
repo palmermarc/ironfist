@@ -5,6 +5,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.App .ui.form input:not([type]),
+.App .ui.form input[type=date],
+.App .ui.form input[type=datetime-local],
+.App .ui.form input[type=email],
+.App .ui.form input[type=file],
+.App .ui.form input[type=number],
+.App .ui.form input[type=password],
+.App .ui.form input[type=search],
+.App .ui.form input[type=tel],
+.App .ui.form input[type=text],
+.App .ui.form input[type=time],
+.App .ui.form input[type=url] {
+  tap-highlight-color: #18194a;
+  border: 1px solid #18194a;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
@@ -13,15 +29,32 @@ code {
   text-align: center;
 }
 .App .ui.menu .item {
-  border-bottom: 1px solid rgba(24, 25, 74, 0.19);
+  border-bottom: 1px solid #18194a;
 }
 .App .ui.visible.left.overlay.sidebar {
   background-color: #fff;
-  border-right: 1px solid rgba(24, 25, 74, 0.19);
+  border-right: 1px solid #18194a;
 }
 .App .ui.visible.left.overlay.sidebar .item {
   color: #18194A;
   font-weight: 700;
+}
+
+.login-wrapper {
+  background-image: url("/assets/images/stormwind.jpg");
+  background-size: cover;
+  position: absolute;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  z-index: 999999;
+}
+.login-wrapper button.ui.large.fluid.button {
+  background-color: #18194A;
+  color: #FFF;
+}
+.login-wrapper i {
+  color: #18194A;
 }
 
 /*# sourceMappingURL=App.css.map */

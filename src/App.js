@@ -9,6 +9,7 @@ import { createBrowserHistory } from 'history'
 
 import SiteHeader from './containers/SiteHeader';
 import Roster from './containers/Roster';
+import Login from './containers/Login';
 import './App.css';
 
 const history = createBrowserHistory();
@@ -27,9 +28,8 @@ class App extends React.Component {
         <SiteHeader />
         <Router history={history}>
           <Switch>
-            <Route path="/">
-              <Roster />
-            </Route>
+            <Route path="/login" component={Login} />
+            <Route path="/" compoent={Roster} />
           </Switch>
         </Router>
       </div>
