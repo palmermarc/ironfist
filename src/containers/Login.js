@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
-import { Dimmer, Loader, Button, Segment, Form, Grid, Header, Image, Message } from 'semantic-ui-react';
+import { Button, Segment, Form, Grid } from 'semantic-ui-react';
 import bg from '../assets/images/stormwind.jpg';
 
 class Login extends React.Component {
