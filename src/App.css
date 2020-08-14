@@ -49,12 +49,27 @@ code {
   width: 100vw;
   z-index: 999999;
 }
+.login-wrapper .login-wrapper-overlay {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.75);
+}
 .login-wrapper button.ui.large.fluid.button {
   background-color: #18194A;
   color: #FFF;
 }
 .login-wrapper i {
   color: #18194A;
+}
+.login-wrapper .ui.stacked.segment:after,
+.login-wrapper .ui.stacked.segment:before,
+.login-wrapper .ui.stacked.segments:after,
+.login-wrapper .ui.stacked.segments:before {
+  display: none !important;
+}
+.login-wrapper .ui.segment {
+  box-shadow: 4px 4px 25px 0 #18194A;
 }
 
 /*# sourceMappingURL=App.css.map */

@@ -52,11 +52,31 @@ code {
   height: 100vh;
   width: 100vw;
   z-index: 999999;
+
+  .login-wrapper-overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: rgba(0,0,0,0.75);
+  }
+
   button.ui.large.fluid.button {
     background-color: $blue;
     color: #FFF;
   }
+
   i {
     color: $blue;
+  }
+
+  .ui.stacked.segment:after,
+  .ui.stacked.segment:before,
+  .ui.stacked.segments:after,
+  .ui.stacked.segments:before {
+    display: none !important;
+  }
+
+  .ui.segment {
+    box-shadow: 4px 4px 25px 0 $blue;
   }
 }
