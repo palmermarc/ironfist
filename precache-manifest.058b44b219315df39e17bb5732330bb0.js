@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "86575ac2d612bf585577598cd1b22846",
+    "revision": "4e3225fa9970ac410b85a518031fafb1",
     "url": "/ironfist/index.html"
   },
   {
-    "revision": "4c3dd2b3f2433bba5be9",
+    "revision": "4b6841c054d9695034e5",
     "url": "/ironfist/static/css/main.e6a3e929.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ironfist/static/js/2.d99f9be4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "4c3dd2b3f2433bba5be9",
-    "url": "/ironfist/static/js/main.4de90091.chunk.js"
+    "revision": "4b6841c054d9695034e5",
+    "url": "/ironfist/static/js/main.836cd2e0.chunk.js"
   },
   {
     "revision": "2096842c7e743d8931ea",

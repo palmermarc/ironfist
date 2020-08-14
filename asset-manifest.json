@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ironfist/static/css/main.e6a3e929.chunk.css",
-    "main.js": "/ironfist/static/js/main.4de90091.chunk.js",
-    "main.js.map": "/ironfist/static/js/main.4de90091.chunk.js.map",
+    "main.js": "/ironfist/static/js/main.836cd2e0.chunk.js",
+    "main.js.map": "/ironfist/static/js/main.836cd2e0.chunk.js.map",
     "runtime-main.js": "/ironfist/static/js/runtime-main.86349990.js",
     "runtime-main.js.map": "/ironfist/static/js/runtime-main.86349990.js.map",
     "static/js/2.d99f9be4.chunk.js": "/ironfist/static/js/2.d99f9be4.chunk.js",
     "static/js/2.d99f9be4.chunk.js.map": "/ironfist/static/js/2.d99f9be4.chunk.js.map",
     "index.html": "/ironfist/index.html",
-    "precache-manifest.abdadea2154ad2567280da7941b13c35.js": "/ironfist/precache-manifest.abdadea2154ad2567280da7941b13c35.js",
+    "precache-manifest.058b44b219315df39e17bb5732330bb0.js": "/ironfist/precache-manifest.058b44b219315df39e17bb5732330bb0.js",
     "service-worker.js": "/ironfist/service-worker.js",
     "static/css/main.e6a3e929.chunk.css.map": "/ironfist/static/css/main.e6a3e929.chunk.css.map",
     "static/js/2.d99f9be4.chunk.js.LICENSE.txt": "/ironfist/static/js/2.d99f9be4.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.86349990.js",
     "static/js/2.d99f9be4.chunk.js",
     "static/css/main.e6a3e929.chunk.css",
-    "static/js/main.4de90091.chunk.js"
+    "static/js/main.836cd2e0.chunk.js"
   ]
 }
