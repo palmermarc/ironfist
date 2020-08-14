@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 import { Button, Segment, Form, Grid, Input } from 'semantic-ui-react';
-import bg from '../assets/images/stormwind.jpg';
 import logo from "../logo.svg";
+
+
 
 class Login extends React.Component {
   constructor(props, context) {
@@ -12,14 +13,23 @@ class Login extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.between = this.between.bind(this);
   }
 
   getInitialState() {
+    let bg = this.between(1,5);
     return {
       client_id: '',
       client_secret: '',
       submitted: false,
+      background: bg
     }
+  }
+
+  between(min, max) {
+    return Math.floor(
+      Math.random() * (max - min + 1) + min
+    )
   }
 
   handleChange(e) {
@@ -46,8 +56,10 @@ class Login extends React.Component {
   }
 
   render() {
+    console.log(this.state);
+    let bodyClass = 'login-wrapper wrap fade-in bg-' + this.state.background;
     return (
-      <div className="login-wrapper wrap fade-in" styles={{backgroundImage: `url(${bg})`}}>
+      <div className={bodyClass}>
         <div class="login-wrapper-overlay"></div>
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
@@ -61,7 +73,7 @@ class Login extends React.Component {
                   <Input type="client_secret" name="client_secret" value={this.state.client_secret} onChange={this.handleChange} placeholder="Client Secret" />
                 </Form.Field>
 
-                <Form.Field fluid control={Button}>Login</Form.Field>
+                <Form.Field fluid control={Button}>Authenticate</Form.Field>
               </Segment>
             </Form>
           </Grid.Column>

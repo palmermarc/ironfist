@@ -49,13 +49,31 @@ code {
   width: 100vw;
   z-index: 999999;
 }
+.login-wrapper.bg-1 {
+  background-image: url("/assets/images/stormwind.jpg");
+}
+.login-wrapper.bg-2 {
+  background-image: url("/assets/images/shattered-sky.jpg");
+}
+.login-wrapper.bg-3 {
+  background-image: url("/assets/images/bolvar.jpg");
+}
+.login-wrapper.bg-4 {
+  background-image: url("/assets/images/bolvar-lost.jpg");
+}
+.login-wrapper.bg-5 {
+  background-image: url("/assets/images/sylvanas.jpg");
+}
+.login-wrapper .ui.input > input {
+  border: 1px solid #18194A;
+}
 .login-wrapper .login-wrapper-overlay {
   width: 100vw;
   height: 100vh;
   position: fixed;
   background: rgba(0, 0, 0, 0.75);
 }
-.login-wrapper button.ui.large.fluid.button {
+.login-wrapper button.ui.fluid.button {
   background-color: #18194A;
   color: #FFF;
 }

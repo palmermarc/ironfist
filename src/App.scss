@@ -53,6 +53,26 @@ code {
   width: 100vw;
   z-index: 999999;
 
+  &.bg-1 {
+    background-image: url('/assets/images/stormwind.jpg');
+  }
+  &.bg-2 {
+    background-image: url('/assets/images/shattered-sky.jpg');
+  }
+  &.bg-3 {
+    background-image: url('/assets/images/bolvar.jpg');
+  }
+  &.bg-4 {
+    background-image: url('/assets/images/bolvar-lost.jpg');
+  }
+  &.bg-5 {
+    background-image: url('/assets/images/sylvanas.jpg');
+  }
+
+  .ui.input>input {
+    border: 1px solid $blue;
+  }
+
   .login-wrapper-overlay {
     width: 100vw;
     height: 100vh;
@@ -60,7 +80,7 @@ code {
     background: rgba(0,0,0,0.75);
   }
 
-  button.ui.large.fluid.button {
+  button.ui.fluid.button {
     background-color: $blue;
     color: #FFF;
   }
