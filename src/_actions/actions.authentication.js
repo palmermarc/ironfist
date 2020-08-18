@@ -13,14 +13,8 @@ function authLogout() {
 function authLogin(user) {
   return {
     type: 'LOGIN',
-    isLoggedIn: true,
-    userId: user.id,
-    username: user.username,
-    first_name: user.first_name,
-    last_name: user.last_name,
-    email: user.email,
-    phone: user.phone,
-    token: user.token
+    isAuthed: true,
+    token: user.access_token
   }
 };
 
@@ -38,14 +32,22 @@ export function authenticateUser(username, password){
   };
 
   return (dispatch) => {
-    return axios.get('//Ironfist.api/users/authenticate', loginData ).then((response) => {
-      console.log(response)
-      dispatch(authLogin(response.data.id));
+    return axios.get('https://us.battle.net/oauth/token', {
+      auth: loginData,
+      params: {
+        grant_type: 'client_credentials'
+      }
+    }).then((response) => {
+      if( response.status === 200 ) {
+        dispatch(authLogin(response.data));
+      }
     }).catch((e) => {
       console.log(e);
       let response = JSON.parse(e.response.request.response);
+      console.log(response);
       dispatch(authHasErrors("Error: Wrong Username/Password"));
     });
+
   }
 }
 

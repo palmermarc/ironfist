@@ -5,6 +5,7 @@ import { Button, Segment, Form, Grid, Input } from 'semantic-ui-react';
 import logo from "../logo.svg";
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import config from "../constants/config";
 
 class Login extends React.Component {
   constructor(props, context) {
@@ -14,15 +15,17 @@ class Login extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.between = this.between.bind(this);
+
+    this.updateMember = this.updateMember.bind(this);
   }
 
   getInitialState() {
     let bg = this.between(1,5);
     return {
-      client_id: '96adc66832024326b62b6cf276723411',
-      client_secret: 'P3l9YKt6hhQr5HAcTXlWmBfL6DlHQdeI',
       submitted: false,
-      background: bg
+      background: bg,
+      client_id: config.client_id,
+      client_secret: config.client_secret
     }
   }
 
@@ -37,45 +40,39 @@ class Login extends React.Component {
     this.setState({ [name]: value });
   }
 
+  updateMember(member) {
+
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.setState({submitted: true});
-    const {client_id, client_secret} = this.state;
+    const {client_id, client_secret} = config;
+
     if (client_id && client_secret) {
       axios.get('https://us.battle.net/oauth/token', {
         auth: {
-          username: client_id,
-          password: client_secret
+          username: this.state.client_id,
+          password: this.state.client_secret
         },
         params: {
           grant_type: 'client_credentials'
         }
       } ).then((response) => {
-        console.log(response);
         if( response.status === 200 ) {
           sessionStorage.setItem('access_token', response.data.access_token);
-          const history = useHistory();
-          history.push('/members/');
+          this.props.history.push('/members/');
         }
       });
     }
   }
 
-  componentDidMount() {
-    document.title =  'Ironfist | Member List';
-    this.setState({loading: false});
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState(this.getInitialState());
-  }
-
   render() {
-    console.log(this.state);
     let bodyClass = 'login-wrapper wrap fade-in bg-' + this.state.background;
+
     return (
       <div className={bodyClass}>
-        <div class="login-wrapper-overlay"></div>
+        <div className="login-wrapper-overlay"></div>
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
             <Form onSubmit={this.handleSubmit}>

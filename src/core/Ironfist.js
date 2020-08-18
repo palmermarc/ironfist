@@ -45,9 +45,8 @@ class Ironfist {
         }
         return false;
       });
-
-      //return result;
     });
+    return result;
   }
 
   post( endpoint, data, callback, error ) {
@@ -162,6 +161,9 @@ class Ironfist {
     //browserHistory.push(path);
   }
 
+  getMember(name) {
+    this.get('https://us.api.blizzard.com/profile/wow/character/burning-legion/'+name, {namespace: 'profile-us'})
+  }
 }
 
 export default new Ironfist();

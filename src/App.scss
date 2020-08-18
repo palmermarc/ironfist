@@ -48,25 +48,26 @@ code {
   background-image: url('/assets/images/stormwind.jpg');
   background-size: cover;
   position: absolute;
+  margin: 0 !important;
   text-align: center;
   height: 100vh;
   width: 100vw;
   z-index: 999999;
 
   &.bg-1 {
-    background-image: url('/assets/images/stormwind.jpg');
+    background-image: url('https://palmermarc.github.io/ironfist/assets/images/stormwind.jpg');
   }
   &.bg-2 {
-    background-image: url('/assets/images/shattered-sky.jpg');
+    background-image: url('https://palmermarc.github.io/ironfist/assets/images/shattered-sky.jpg');
   }
   &.bg-3 {
-    background-image: url('/assets/images/bolvar.jpg');
+    background-image: url('https://palmermarc.github.io/ironfist/assets/images/bolvar.jpg');
   }
   &.bg-4 {
-    background-image: url('/assets/images/bolvar-lost.jpg');
+    background-image: url('https://palmermarc.github.io/ironfist/assets/images/bolvar-lost.jpg');
   }
   &.bg-5 {
-    background-image: url('/assets/images/sylvanas.jpg');
+    background-image: url('https://palmermarc.github.io/ironfist/assets/images/sylvanas.jpg');
   }
 
   .ui.input>input {
@@ -106,15 +107,30 @@ code {
 }
 
 .wrap {
-  margin: 0 100px 0 200px;
+  margin: 50px 100px 0 200px;
 }
 
 .members-table {
+  .member-name {
+    text-transform: capitalize;
+  }
   .member-class-icon {
     img {
       height: 25px;
       width: 25px;
       border-radius: 10px;
+    }
+  }
+}
+
+.member-breakout {
+  h1 {
+    float: left;
+  }
+  .member-ancillary-crap {
+    float: right;
+    &:after {
+      clear: both;
     }
   }
 }

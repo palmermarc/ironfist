@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
-import { Dimmer, Loader, Table, Button, Input, Icon, Image } from 'semantic-ui-react';
-import Ironfist from '../core/Ironfist';
+import { Dimmer, Loader, Table, Input, Image } from 'semantic-ui-react';
 import config from '../constants/config';
+import Ironfist from '../core/Ironfist';
 
 class Members extends React.Component {
   constructor(props, context) {
@@ -27,17 +27,10 @@ class Members extends React.Component {
     }
   }
 
-  componentWillMount() {
-    // Call API
-    this.getMembers();
-  }
 
   componentDidMount() {
     document.title =  'Member List | IRONFIST Members Manager';
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState(this.getInitialState(), this.getMembers);
+    this.setState({members: this.getMembers()});
   }
 
   clearFilters() {
@@ -86,12 +79,10 @@ class Members extends React.Component {
   }
 
   render() {
-    let currentFilters = this.state.currentFilters;
-
     let {search} = this;
-    console.log(this.state);
     let races = config.races;
     let classes = config.classes;
+    let ranks = config.ranks;
 
     if(this.state.loading)
       return (
@@ -101,12 +92,6 @@ class Members extends React.Component {
     return (
       <div className="wrap fade-in">
         <div id="view-header-section">
-          <h1 className="view-title">{this.state.niceName}</h1>
-          <Button as={Link} to={'/copy/create'} className="view-create-new">
-            <Icon name="plus" />
-            Create New
-          </Button>
-
           <div className="view-filters"></div>
 
           <div className="view-search">
@@ -121,17 +106,20 @@ class Members extends React.Component {
               <Table.HeaderCell>Race</Table.HeaderCell>
               <Table.HeaderCell>Class</Table.HeaderCell>
               <Table.HeaderCell>Level</Table.HeaderCell>
+              <Table.HeaderCell>Guild Rank</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
             {this.state.members.map((member) => (
               <Table.Row key={'member-' + member.character.id}>
-                <Table.Cell>
-                  <Link to={'/member/' + member.character.id + '/'}>{member.character.name}</Link>
+                <Table.Cell className='member-name'>
+                  <Link to={'/members/' + member.character.name.toLowerCase() + '/'}>{member.character.name} - {member.character.realm.slug.replace('-', ' ')}</Link>
                 </Table.Cell>
-                <Table.Cell>{races.[member.character.playable_race.id]}</Table.Cell>
+
+                <Table.Cell className='member-race'>{races.[member.character.playable_race.id]}</Table.Cell>
                 <Table.Cell className='member-class-icon'><Image src={classes.[member.character.playable_class.id].icon} /></Table.Cell>
-                <Table.Cell>{member.character.level}</Table.Cell>
+                <Table.Cell className='member-level'>{member.character.level}</Table.Cell>
+                <Table.Cell className='member-rank'>{ranks.[member.rank]}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>
