@@ -113,7 +113,7 @@ class Members extends React.Component {
             {this.state.members.map((member) => (
               <Table.Row key={'member-' + member.character.id}>
                 <Table.Cell className='member-name'>
-                  <Link to={'/members/' + member.character.name.toLowerCase() + '/'}>{member.character.name} - {member.character.realm.slug.replace('-', ' ')}</Link>
+                  <Link to={'/members/' + member.character.realm.slug + '/' + member.character.name.toLowerCase() + '/'}>{member.character.name} - {member.character.realm.slug.replace('-', ' ')}</Link>
                 </Table.Cell>
 
                 <Table.Cell className='member-race'>{races.[member.character.playable_race.id]}</Table.Cell>

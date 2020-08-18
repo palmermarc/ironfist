@@ -31,17 +31,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <SiteHeader />
-        <Router>
+      <Router>
+        <div className="App">
+          <SiteHeader />
           <Switch>
             <Route path="/login" component={Login} />
-            <Route exact path="/members/:memberName" component={Member} />
+            <Route exact path="/members/:serverName/:memberName" component={Member} />
             <Route path="/members" component={Members} />
-
           </Switch>
-        </Router>
-      </div>
+        </div>
+      </Router>
     )
   }
 }

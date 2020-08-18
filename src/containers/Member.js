@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
-import { Dimmer, Loader, Table, Input, Image } from 'semantic-ui-react';
+import { Dimmer, Loader, Table } from 'semantic-ui-react';
 import config from '../constants/config';
 import Ironfist from '../core/Ironfist';
 
@@ -23,16 +22,22 @@ class Member extends React.Component {
 
   componentDidMount() {
     if( typeof this.props.match.params.memberName !== "undefined" ) {
-      this.setState({ memberName: this.props.match.params.memberName, niceName: "Update Copy" });
+      this.setState({ memberName: this.props.match.params.memberName });
     }
+
+    if( typeof this.props.match.params.serverName !== "undefined" ) {
+      this.setState({ serverName: this.props.match.params.serverName });
+    }
+
+    this.getMember();
 
     document.title = this.state.niceName;
     this.setState({loading: false});
   }
 
   getMember() {
-    let self = this;
-    Ironfist.getmember(this.props.memberName);
+    let member = Ironfist.getMember(this.props.match.params.serverName, this.props.match.params.memberName);
+    console.log(member);
   }
 
   render() {

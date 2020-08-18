@@ -161,8 +161,16 @@ class Ironfist {
     //browserHistory.push(path);
   }
 
-  getMember(name) {
-    this.get('https://us.api.blizzard.com/profile/wow/character/burning-legion/'+name, {namespace: 'profile-us'})
+  getMember(server, character_name) {
+    let member = {};
+    let url = 'https://us.api.blizzard.com/profile/wow/character/' + server + '/' + character_name + '?namespace=profile-us';
+    this.get(url, {},
+      function(response) {
+        console.log(response);
+        member.response = response;
+      });
+
+    return member;
   }
 }
 

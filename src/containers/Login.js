@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 import { Button, Segment, Form, Grid, Input } from 'semantic-ui-react';
 import logo from "../logo.svg";
-import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import config from "../constants/config";
 
