@@ -74,11 +74,9 @@ class Members extends React.Component {
 
   getMembers() {
     let self = this;
-    console.log(config.apiLinks.guild.roster);
     Ironfist.get( config.apiLinks.guild.roster,
       this.state.currentFilters,
       function(response) {
-        console.log(response);
         self.setState( { members: response.data.members, loading: false } );
       }
       ,function (err) {

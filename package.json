@@ -2,6 +2,7 @@
   "name": "ironfist",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://palmermarc.github.io/ironfist/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.1.0",
     "@testing-library/jest-dom": "^4.2.4",
