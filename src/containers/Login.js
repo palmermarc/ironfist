@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 import { Button, Segment, Form, Grid, Input } from 'semantic-ui-react';
 import logo from "../logo.svg";
-
-
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 class Login extends React.Component {
   constructor(props, context) {
@@ -19,8 +19,8 @@ class Login extends React.Component {
   getInitialState() {
     let bg = this.between(1,5);
     return {
-      client_id: '',
-      client_secret: '',
+      client_id: '96adc66832024326b62b6cf276723411',
+      client_secret: 'P3l9YKt6hhQr5HAcTXlWmBfL6DlHQdeI',
       submitted: false,
       background: bg
     }
@@ -40,9 +40,24 @@ class Login extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.setState({submitted: true});
-    const {username, password} = this.state;
-    if (username && password) {
-      this.props.actions.authenticateUser(username, password);
+    const {client_id, client_secret} = this.state;
+    if (client_id && client_secret) {
+      axios.get('https://us.battle.net/oauth/token', {
+        auth: {
+          username: client_id,
+          password: client_secret
+        },
+        params: {
+          grant_type: 'client_credentials'
+        }
+      } ).then((response) => {
+        console.log(response);
+        if( response.status === 200 ) {
+          sessionStorage.setItem('access_token', response.data.access_token);
+          const history = useHistory();
+          history.push('/members/');
+        }
+      });
     }
   }
 

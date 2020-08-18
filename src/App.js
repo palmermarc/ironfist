@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { connect } from 'react-redux';
 import * as actions from "./_actions/actions.authentication";
 import {bindActionCreators} from "redux";
-import { createBrowserHistory } from 'history'
+import { createBrowserHistory } from 'history';
 
 import SiteHeader from './containers/SiteHeader';
-//import Roster from './containers/Roster';
+import Members from './containers/Members';
 import Login from './containers/Login';
 import './App.css';
 
@@ -19,17 +19,14 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    let token = sessionStorage.getItem("marcoPromoToken");
+    let token = sessionStorage.getItem("access_token");
 
     if ( token !== null ) {
-      console.log('We need to check the token...');
-      //this.props.actions.checkToken(token);
+      history.push('/members/');
     } else {
       history.push('/login/');
     }
   }
-
-
 
   render() {
     return (
@@ -38,6 +35,7 @@ class App extends React.Component {
         <Router history={history}>
           <Switch>
             <Route path="/login" component={Login} />
+            <Route path="/members" component={Members} />
           </Switch>
         </Router>
       </div>

@@ -104,3 +104,17 @@ code {
     width: 50%;
   }
 }
+
+.wrap {
+  margin: 0 100px 0 200px;
+}
+
+.members-table {
+  .member-class-icon {
+    img {
+      height: 25px;
+      width: 25px;
+      border-radius: 10px;
+    }
+  }
+}

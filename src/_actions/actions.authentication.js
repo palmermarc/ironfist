@@ -38,15 +38,8 @@ export function authenticateUser(username, password){
   };
 
   return (dispatch) => {
-    return axios.post('//Ironfist.api/users/authenticate', loginData ).then((response) => {
-      sessionStorage.setItem('IronfistToken', response.data.token);
-      sessionStorage.setItem('user', response.data);
-      sessionStorage.setItem('userId', response.data.id);
-      sessionStorage.setItem('username', response.data.username);
-      sessionStorage.setItem('first_name', response.data.first_name);
-      sessionStorage.setItem('last_name', response.data.last_name);
-      sessionStorage.setItem('email', response.data.email);
-      sessionStorage.setItem('phone', response.data.phone);
+    return axios.get('//Ironfist.api/users/authenticate', loginData ).then((response) => {
+      console.log(response)
       dispatch(authLogin(response.data.id));
     }).catch((e) => {
       console.log(e);

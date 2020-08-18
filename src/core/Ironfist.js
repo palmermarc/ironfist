@@ -14,15 +14,16 @@ class Ironfist {
 
     let self = this;
 
-    let url = this.config.apiBase + endpoint + ( query !== {} ? '' + queryString.stringify(query) : '' );
+    let url = endpoint + ( query !== {} ? '' + queryString.stringify(query) : '' );
+    let token = sessionStorage.getItem('access_token');
     let config = {
-      headers: {"Authorization": "Bearer USww3PVEUWV8AjyO47JMjEJvl9E9IO3bN2"}
+      headers: {"Authorization": "Bearer " + token}
     };
-    console.log(url);
+
     let result = new Promise(resolve => {
       let r = resolve;
       axios.get(url, config).then(function (response) {
-        console.log(response);
+
         if (typeof callback === "function") {
           callback(response);
         }
@@ -44,7 +45,8 @@ class Ironfist {
         }
         return false;
       });
-      return result;
+
+      //return result;
     });
   }
 
