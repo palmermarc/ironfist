@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/ironfist/static/css/main.832d3f66.chunk.css",
-    "main.js": "/ironfist/static/js/main.a903df9d.chunk.js",
-    "main.js.map": "/ironfist/static/js/main.a903df9d.chunk.js.map",
+    "main.js": "/ironfist/static/js/main.f99cc475.chunk.js",
+    "main.js.map": "/ironfist/static/js/main.f99cc475.chunk.js.map",
     "runtime-main.js": "/ironfist/static/js/runtime-main.86349990.js",
     "runtime-main.js.map": "/ironfist/static/js/runtime-main.86349990.js.map",
-    "static/js/2.b6d6114f.chunk.js": "/ironfist/static/js/2.b6d6114f.chunk.js",
-    "static/js/2.b6d6114f.chunk.js.map": "/ironfist/static/js/2.b6d6114f.chunk.js.map",
+    "static/js/2.78abb100.chunk.js": "/ironfist/static/js/2.78abb100.chunk.js",
+    "static/js/2.78abb100.chunk.js.map": "/ironfist/static/js/2.78abb100.chunk.js.map",
     "index.html": "/ironfist/index.html",
-    "precache-manifest.67fd3d7fdb48a44626d5493de1a2f779.js": "/ironfist/precache-manifest.67fd3d7fdb48a44626d5493de1a2f779.js",
+    "precache-manifest.e49f9aaf5b4efee5dd82305453b3f2fd.js": "/ironfist/precache-manifest.e49f9aaf5b4efee5dd82305453b3f2fd.js",
     "service-worker.js": "/ironfist/service-worker.js",
     "static/css/main.832d3f66.chunk.css.map": "/ironfist/static/css/main.832d3f66.chunk.css.map",
-    "static/js/2.b6d6114f.chunk.js.LICENSE.txt": "/ironfist/static/js/2.b6d6114f.chunk.js.LICENSE.txt",
+    "static/js/2.78abb100.chunk.js.LICENSE.txt": "/ironfist/static/js/2.78abb100.chunk.js.LICENSE.txt",
     "static/media/logo.svg": "/ironfist/static/media/logo.625c6fb3.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.86349990.js",
-    "static/js/2.b6d6114f.chunk.js",
+    "static/js/2.78abb100.chunk.js",
     "static/css/main.832d3f66.chunk.css",
-    "static/js/main.a903df9d.chunk.js"
+    "static/js/main.f99cc475.chunk.js"
   ]
 }
