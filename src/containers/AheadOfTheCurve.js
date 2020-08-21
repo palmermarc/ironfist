@@ -8,11 +8,8 @@ function DisplayAotc(props) {
   if(!props.memberData) {
     return;
   }
-
   let member = props.memberData;
   let level = member.character.level;
-  //check circle
-  //times circle
 
   if( level === 120 ) {
     member.achievements = {
