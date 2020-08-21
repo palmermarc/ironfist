@@ -235,17 +235,16 @@ const config = {
     },
   },
   ranks : {
-    1: 'Leader',
-    2: 'XO',
-    3: 'Officer',
-    4: 'Officer Alt',
-    5: 'Raid Leader' ,
-    6: 'Raider',
-    7: 'Member',
-    8: 'Alt',
-    9: 'Recruit'
-
-}
+    0: 'Leader',
+    1: 'XO',
+    2: 'Officer',
+    3: 'Officer Alt',
+    4: 'Raid Leader' ,
+    5: 'Raider',
+    6: 'Member',
+    7: 'Alt',
+    8: 'Recruit'
+  }
 }
 
 export default config;

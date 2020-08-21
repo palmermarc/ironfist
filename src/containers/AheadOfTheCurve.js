@@ -17,19 +17,30 @@ function DisplayAotc(props) {
   //times circle
 
   if( level === 120 ) {
+    member.achievements = {
+      aotc: {
+        ghuun: false,
+        jaina: false,
+        uunat: false,
+        azhsara: false,
+        nzoth: true
+      }
+    };
+
     return(
       <Table.Row key={'member-' + member.character.id}>
         <Table.Cell className='member-name'>{member.character.name} - {member.character.realm.slug.replace('-', ' ')}</Table.Cell>
-        <Table.Cell><Icon color="red" name='times circle' /></Table.Cell>
-        <Table.Cell><Icon color="red" name='times circle' /></Table.Cell>
-        <Table.Cell><Icon color="red" name='times circle' /></Table.Cell>
-        <Table.Cell><Icon color="red" name='times circle' /></Table.Cell>
+        <Table.Cell>{member.achievements.aotc.ghuun ? <Icon color="green" name='check circle' /> : <Icon color="red" name='times circle' /> }</Table.Cell>
+        <Table.Cell>{member.achievements.aotc.jaina ? <Icon color="green" name='check circle' /> : <Icon color="red" name='times circle' /> }</Table.Cell>
+        <Table.Cell>{member.achievements.aotc.uunat ? <Icon color="green" name='check circle' /> : <Icon color="red" name='times circle' /> }</Table.Cell>
+        <Table.Cell>{member.achievements.aotc.azhsara ? <Icon color="green" name='check circle' /> : <Icon color="red" name='times circle' /> }</Table.Cell>
+        <Table.Cell>{member.achievements.aotc.nzoth ? <Icon color="green" name='check circle' /> : <Icon color="red" name='times circle' /> }</Table.Cell>
       </Table.Row>
     );
   }
 
   return(
-    <span></span>
+    <Table.Row></Table.Row>
   )
 
 }
@@ -38,9 +49,6 @@ class AheadOfTheCurve extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = this.getInitialState();
-    this.filterStatus = this.filterStatus.bind(this);
-    this.filterSearch = this.filterSearch.bind(this);
-    this.search = this.search.bind(this);
   }
 
   getInitialState() {
@@ -58,60 +66,7 @@ class AheadOfTheCurve extends React.Component {
 
   componentDidMount() {
     document.title =  'Member List | IRONFIST Members Manager';
-
-    let membersArr = sessionStorage.getItem('members');
-    if( membersArr !== null) {
-      this.setState({members: JSON.parse(membersArr), loading: false } );
-    } else {
-      this.setState({members: this.getMembers()});
-    }
-  }
-
-  clearFilters() {
-    this.setState(
-      {
-        currentFilters: []
-      },
-      this.getMembers
-    );
-  }
-
-  filterStatus(e, {value}) {
-    let currentFilters = Object.assign({}, this.state.currentFilters);
-
-    if (value === 'any') {
-      delete currentFilters['status'];
-
-    } else {
-      currentFilters['status'] = value;
-    }
-
-    this.setState({currentFilters: currentFilters}, this.getMembers);
-  }
-
-  filterSearch(value) {
-    this.setState({currentFilters: {"search": value}}, this.getMembers);
-  }
-
-  search(e) {
-    e.persist();
-    let filterSearch = this.filterSearch;
-    filterSearch(e.target.value);
-  }
-
-  getMembers() {
-    let self = this;
-
-    Ironfist.get( config.apiLinks.guild.roster,
-      this.state.currentFilters,
-      function(response) {
-        self.setState( { members: response.data.members, loading: false } );
-        sessionStorage.setItem('members', JSON.stringify(response.data.members));
-      }
-      ,function (err) {
-        console.log("Error getting records from Ironfist API server: " + err);
-      }
-    );
+    this.setState({members: Ironfist.getIronfistMembers(), loading: false});
   }
 
   render() {
@@ -125,26 +80,17 @@ class AheadOfTheCurve extends React.Component {
         <Dimmer active inverted><Loader inverted content='Loading IRONFIST Members' size="massive" /></Dimmer>
       )
 
-    console.log(this.state);
-
     return (
       <div className="wrap fade-in">
-        <div id="view-header-section">
-          <div className="view-filters"></div>
-
-          <div className="view-search">
-            <Input placeholder={"Search " + this.state.niceName  + '...'} onKeyUp={search} />
-          </div>
-        </div>
-
         <Table celled selectable className="members-table">
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>Ny'alotha, the Waking City</Table.HeaderCell>
-              <Table.HeaderCell>The Eternal Palace</Table.HeaderCell>
-              <Table.HeaderCell>Battle of Dazar'alor</Table.HeaderCell>
-              <Table.HeaderCell>Uldir</Table.HeaderCell>
+              <Table.HeaderCell>G'huun</Table.HeaderCell>
+              <Table.HeaderCell>Jaina</Table.HeaderCell>
+              <Table.HeaderCell>Uu'nat</Table.HeaderCell>
+              <Table.HeaderCell>Queen Azshara</Table.HeaderCell>
+              <Table.HeaderCell>N'Zoth</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>

@@ -30,13 +30,7 @@ class Members extends React.Component {
 
   componentDidMount() {
     document.title =  'Member List | IRONFIST Members Manager';
-
-    let membersArr = sessionStorage.getItem('members');
-    if( membersArr !== null) {
-      this.setState({members: JSON.parse(membersArr), loading: false } );
-    } else {
-      this.setState({members: this.getMembers()});
-    }
+    this.setState({members: Ironfist.getIronfistMembers(), loading: false});
   }
 
   clearFilters() {
@@ -69,21 +63,6 @@ class Members extends React.Component {
     e.persist();
     let filterSearch = this.filterSearch;
     filterSearch(e.target.value);
-  }
-
-  getMembers() {
-    let self = this;
-
-    Ironfist.get( config.apiLinks.guild.roster,
-      this.state.currentFilters,
-      function(response) {
-        self.setState( { members: response.data.members, loading: false } );
-        sessionStorage.setItem('members', JSON.stringify(response.data.members));
-      }
-      ,function (err) {
-        console.log("Error getting records from Ironfist API server: " + err);
-      }
-    );
   }
 
   render() {

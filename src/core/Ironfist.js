@@ -182,6 +182,28 @@ class Ironfist {
     });
     return member;
   }
+
+  getIronfistMembers() {
+    let self = this;
+
+    // Grab the data from sessionStorage if it exists
+    let membersArr = sessionStorage.getItem('members');
+    if( membersArr !== null) {
+      return JSON.parse(membersArr);
+    }
+
+    // Didn't exist, time to get to work!
+    self.get( config.apiLinks.guild.roster,
+      this.state.currentFilters,
+      function(response) {
+        sessionStorage.setItem('members', JSON.stringify(response.data.members));
+        return response.data.members;
+      }
+      ,function (err) {
+        console.log("Error getting records from Ironfist API server: " + err);
+      }
+    );
+  }
 }
 
 export default new Ironfist();
