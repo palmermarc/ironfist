@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
-import { Dimmer, Loader, Table, Input, Icon } from 'semantic-ui-react';
-import config from '../constants/config';
+import { Dimmer, Loader, Table, Icon } from 'semantic-ui-react';
 import Ironfist from '../core/Ironfist';
 
 function DisplayAotc(props) {
@@ -53,7 +51,6 @@ class AheadOfTheCurve extends React.Component {
 
   getInitialState() {
     return {
-      currentFilters: {},
       currentPage: 1,
       members: [],
       totalCount: 0,
@@ -70,11 +67,6 @@ class AheadOfTheCurve extends React.Component {
   }
 
   render() {
-    let {search} = this;
-    let races = config.races;
-    let classes = config.classes;
-    let ranks = config.ranks;
-
     if(this.state.loading)
       return (
         <Dimmer active inverted><Loader inverted content='Loading IRONFIST Members' size="massive" /></Dimmer>

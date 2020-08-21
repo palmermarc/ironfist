@@ -194,7 +194,7 @@ class Ironfist {
 
     // Didn't exist, time to get to work!
     self.get( config.apiLinks.guild.roster,
-      this.state.currentFilters,
+      {},
       function(response) {
         sessionStorage.setItem('members', JSON.stringify(response.data.members));
         return response.data.members;
