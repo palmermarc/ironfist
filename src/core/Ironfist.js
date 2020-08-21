@@ -164,12 +164,22 @@ class Ironfist {
   getMember(server, character_name) {
     let member = {};
     let url = 'https://us.api.blizzard.com/profile/wow/character/' + server + '/' + character_name + '?namespace=profile-us';
-    this.get(url, {},
-      function(response) {
-        console.log(response);
-        member.response = response;
-      });
+    this.get(url, {}, function(response) {
 
+      member.achievement_points = response.data.achievement_points;
+      member.active_spec = response.data.active_spec.id;
+      member.active_title = response.data.active_title.display_string.en_US.replace('{name}', '');
+      member.average_item_level = response.data.average_item_level;
+      member.playableClass = response.data.character_class.id;
+      member.equipped_item_level = response.data.equipped_item_level;
+      member.id = response.data.id;
+      member.last_login_timestamp = response.data.last_login_timestamp;
+      member.level = response.data.level;
+      member.name = response.data.name;
+      member.race = response.data.race.id;
+
+      return member;
+    });
     return member;
   }
 }

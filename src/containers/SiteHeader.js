@@ -25,7 +25,7 @@ const SiteHeader = () => {
           Mythic+
         </Menu.Item>
       </Link>
-      <Link to={'/aotc'}>
+      <Link to={'/ahead-of-the-curve'}>
         <Menu.Item>
           <Icon name="weight" />
           Ahead of the Curve

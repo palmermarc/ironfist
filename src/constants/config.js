@@ -91,147 +91,147 @@ const config = {
   specs: {
     62: {
       name: "Arcane",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/62?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/62.jpg?namespace=static-8.3.7_35114-us'
     },
     63: {
       name: "Fire",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/63?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/63.jpg?namespace=static-8.3.7_35114-us'
     },
     64: {
       name: "Frost",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/64?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/64.jpg?namespace=static-8.3.7_35114-us'
     },
     65: {
       name: "Holy",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/65?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/65.jpg?namespace=static-8.3.7_35114-us'
     },
     66: {
       name: "Protection",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/66?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/66.jpg?namespace=static-8.3.7_35114-us'
     },
     70: {
       name: "Retribution",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/70?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/70.jpg?namespace=static-8.3.7_35114-us'
     },
     71: {
       name: "Arms",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/71?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/71.jpg?namespace=static-8.3.7_35114-us'
     },
     72: {
       name: "Fury",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/72?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/72.jpg?namespace=static-8.3.7_35114-us'
     },
     73: {
       name: "Protection",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/72?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/72.jpg?namespace=static-8.3.7_35114-us'
     },
     102: {
       name: "Balance",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/102?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/102.jpg?namespace=static-8.3.7_35114-us'
     },
     103: {
       name: "Feral",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/103?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/103.jpg?namespace=static-8.3.7_35114-us'
     },
     104: {
       name: "Guardian",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/104?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/104.jpg?namespace=static-8.3.7_35114-us'
     },
     105: {
       name: "Restoration",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/105?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/105.jpg?namespace=static-8.3.7_35114-us'
     },
     250: {
       name: "Blood",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/250?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/250.jpg?namespace=static-8.3.7_35114-us'
     },
     251: {
       name: "Frost",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/251?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/251.jpg?namespace=static-8.3.7_35114-us'
     },
     252: {
       name: "Unholy",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/252?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/252.jpg?namespace=static-8.3.7_35114-us'
     },
     253: {
       name: "Beast Mastery",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/253?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/253.jpg?namespace=static-8.3.7_35114-us'
     },
     254: {
       name: "Marksmanship",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/254?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/254.jpg?namespace=static-8.3.7_35114-us'
     },
     255: {
       name: "Survival",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/255?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/255.jpg?namespace=static-8.3.7_35114-us'
     },
     256: {
       name: "Discipline",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/256?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/256.jpg?namespace=static-8.3.7_35114-us'
     },
     257: {
       name: "Holy",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/257?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/257.jpg?namespace=static-8.3.7_35114-us'
     },
     258: {
       name: "Shadow",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/258?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/258.jpg?namespace=static-8.3.7_35114-us'
     },
     259: {
       name: "Assassination",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/259?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/259.jpg?namespace=static-8.3.7_35114-us'
     },
     260: {
       name: "Outlaw",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/260?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/260.jpg?namespace=static-8.3.7_35114-us'
     },
     261: {
       name: "Subtlety",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/261?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/261.jpg?namespace=static-8.3.7_35114-us'
     },
     262: {
       name: "Elemental",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/262?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/262.jpg?namespace=static-8.3.7_35114-us'
     },
     263: {
       name: "Enhancement",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/263?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/263.jpg?namespace=static-8.3.7_35114-us'
     },
     264: {
       name: "Restoration",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/264?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/264.jpg?namespace=static-8.3.7_35114-us'
     },
     265: {
       name: "Affliction",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/265?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/265.jpg?namespace=static-8.3.7_35114-us'
     },
     266: {
       name: "Demonology",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/266?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/266.jpg?namespace=static-8.3.7_35114-us'
     },
     267: {
       name: "Destruction",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/267?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/267.jpg?namespace=static-8.3.7_35114-us'
     },
     268: {
       name: "Brewmaster",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/268?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/268.jpg?namespace=static-8.3.7_35114-us'
     },
     269: {
       name: "Windwalker",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/269?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/269.jpg?namespace=static-8.3.7_35114-us'
     },
     270: {
       name: "Mistweaver",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/270?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/270.jpg?namespace=static-8.3.7_35114-us'
     },
     577: {
       name: "Havoc",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/577?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/577.jpg?namespace=static-8.3.7_35114-us'
     },
     581: {
       name: "Vengeance",
-      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/581?namespace=static-8.3.7_35114-us'
+      icon: 'https://us.api.blizzard.com/data/wow/media/playable-specialization/581.jpg?namespace=static-8.3.7_35114-us'
     },
   },
   ranks : {

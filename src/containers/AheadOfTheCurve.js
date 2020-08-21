@@ -2,11 +2,39 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
-import { Dimmer, Loader, Table, Input, Image } from 'semantic-ui-react';
+import { Dimmer, Loader, Table, Input, Icon } from 'semantic-ui-react';
 import config from '../constants/config';
 import Ironfist from '../core/Ironfist';
 
-class Members extends React.Component {
+function DisplayAotc(props) {
+  if(!props.memberData) {
+    return;
+  }
+
+  let member = props.memberData;
+  let level = member.character.level;
+  //check circle
+  //times circle
+
+  if( level === 120 ) {
+    return(
+      <Table.Row key={'member-' + member.character.id}>
+        <Table.Cell className='member-name'>{member.character.name} - {member.character.realm.slug.replace('-', ' ')}</Table.Cell>
+        <Table.Cell><Icon color="red" name='times circle' /></Table.Cell>
+        <Table.Cell><Icon color="red" name='times circle' /></Table.Cell>
+        <Table.Cell><Icon color="red" name='times circle' /></Table.Cell>
+        <Table.Cell><Icon color="red" name='times circle' /></Table.Cell>
+      </Table.Row>
+    );
+  }
+
+  return(
+    <span></span>
+  )
+
+}
+
+class AheadOfTheCurve extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = this.getInitialState();
@@ -113,24 +141,15 @@ class Members extends React.Component {
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>Race</Table.HeaderCell>
-              <Table.HeaderCell>Class</Table.HeaderCell>
-              <Table.HeaderCell>Level</Table.HeaderCell>
-              <Table.HeaderCell>Guild Rank</Table.HeaderCell>
+              <Table.HeaderCell>Ny'alotha, the Waking City</Table.HeaderCell>
+              <Table.HeaderCell>The Eternal Palace</Table.HeaderCell>
+              <Table.HeaderCell>Battle of Dazar'alor</Table.HeaderCell>
+              <Table.HeaderCell>Uldir</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
             {this.state.members.map((member) => (
-              <Table.Row key={'member-' + member.character.id}>
-                <Table.Cell className='member-name'>
-                  <Link to={'/members/' + member.character.realm.slug + '/' + member.character.name.toLowerCase() + '/'}>{member.character.name} - {member.character.realm.slug.replace('-', ' ')}</Link>
-                </Table.Cell>
-
-                <Table.Cell className='member-race'>{races.[member.character.playable_race.id]}</Table.Cell>
-                <Table.Cell className='member-class-icon'><Image src={classes.[member.character.playable_class.id].icon} /></Table.Cell>
-                <Table.Cell className='member-level'>{member.character.level}</Table.Cell>
-                <Table.Cell className='member-rank'>{ranks.[member.rank]}</Table.Cell>
-              </Table.Row>
+              <DisplayAotc memberData={member} />
             ))}
           </Table.Body>
         </Table>
@@ -150,4 +169,4 @@ function mapDispatchToProps(dispatch) {
 export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Members));
+)(AheadOfTheCurve));

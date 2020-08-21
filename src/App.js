@@ -10,6 +10,7 @@ import SiteHeader from './containers/SiteHeader';
 import Members from './containers/Members';
 import Member from './containers/Member';
 import Login from './containers/Login';
+import AheadOfTheCurve from './containers/AheadOfTheCurve';
 import './App.css';
 
 const history = createBrowserHistory();
@@ -38,6 +39,7 @@ class App extends React.Component {
             <Route path="/login" component={Login} />
             <Route exact path="/members/:serverName/:memberName" component={Member} />
             <Route path="/members" component={Members} />
+            <Route path="/ahead-of-the-curve" component={AheadOfTheCurve} />
           </Switch>
         </div>
       </Router>
