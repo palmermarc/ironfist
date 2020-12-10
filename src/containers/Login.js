@@ -1,21 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
-import { Button, Segment, Form, Grid, Input } from 'semantic-ui-react';
+import { Button, Segment, Grid } from 'semantic-ui-react';
 import logo from "../logo.svg";
-import axios from 'axios';
-import config from "../constants/config";
 
 class Login extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = this.getInitialState();
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.between = this.between.bind(this);
-
-    this.updateMember = this.updateMember.bind(this);
   }
 
   getInitialState() {
@@ -23,8 +18,6 @@ class Login extends React.Component {
     return {
       submitted: false,
       background: bg,
-      client_id: config.client_id,
-      client_secret: config.client_secret
     }
   }
 
@@ -34,36 +27,8 @@ class Login extends React.Component {
     )
   }
 
-  handleChange(e) {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  }
-
-  updateMember(member) {
-
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.setState({submitted: true});
-    const {client_id, client_secret} = config;
-
-    if (client_id && client_secret) {
-      axios.get('https://us.battle.net/oauth/token', {
-        auth: {
-          username: this.state.client_id,
-          password: this.state.client_secret
-        },
-        params: {
-          grant_type: 'client_credentials'
-        }
-      } ).then((response) => {
-        if( response.status === 200 ) {
-          sessionStorage.setItem('access_token', response.data.access_token);
-          this.props.history.push('/members/');
-        }
-      });
-    }
+  handleClick(e) {
+    this.props.history.push('/members/');
   }
 
   render() {
@@ -74,19 +39,11 @@ class Login extends React.Component {
         <div className="login-wrapper-overlay"></div>
         <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
-            <Form onSubmit={this.handleSubmit}>
-              <Segment stacked>
-                <img src={logo} className="login-logo" alt="logo" />
-                <Form.Field>
-                  <Input type="client_id" name="client_id" value={this.state.client_id} onChange={this.handleChange} placeholder="Client ID" />
-                </Form.Field>
-                <Form.Field>
-                  <Input type="client_secret" name="client_secret" value={this.state.client_secret} onChange={this.handleChange} placeholder="Client Secret" />
-                </Form.Field>
+            <Segment stacked>
+              <img src={logo} className="login-logo" alt="logo" />
 
-                <Form.Field fluid control={Button}>Authenticate</Form.Field>
-              </Segment>
-            </Form>
+              <Button attached='bottom' content='View the Roster' onClick={this.handleClick} />
+            </Segment>
           </Grid.Column>
         </Grid>
       </div>

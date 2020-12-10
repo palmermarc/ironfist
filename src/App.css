@@ -65,16 +65,13 @@ code {
 .login-wrapper.bg-5 {
   background-image: url("https://palmermarc.github.io/ironfist/assets/images/sylvanas.jpg");
 }
-.login-wrapper .ui.input > input {
-  border: 1px solid #18194A;
-}
 .login-wrapper .login-wrapper-overlay {
   width: 100vw;
   height: 100vh;
   position: fixed;
   background: rgba(0, 0, 0, 0.75);
 }
-.login-wrapper button.ui.fluid.button {
+.login-wrapper .ui.bottom.attached.button {
   background-color: #18194A;
   color: #FFF;
 }
