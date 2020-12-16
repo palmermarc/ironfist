@@ -7,10 +7,11 @@ import {bindActionCreators} from "redux";
 import { createBrowserHistory } from 'history';
 
 import SiteHeader from './containers/SiteHeader';
-import Members from './containers/Members';
-import Member from './containers/Member';
+import Ironfist from './core/Ironfist';
 import Login from './containers/Login';
-import AheadOfTheCurve from './containers/AheadOfTheCurve';
+import Members from './containers/Members';
+//import Member from './containers/Member';
+//import AheadOfTheCurve from './containers/AheadOfTheCurve';
 import './App.css';
 
 const history = createBrowserHistory();
@@ -20,7 +21,8 @@ class App extends React.Component {
     super(props);
   }
 
-  componentWillMount() {
+  async componentWillMount() {
+    Ironfist.createDatabase();
     let token = sessionStorage.getItem("access_token");
 
     if ( token !== null ) {
@@ -37,9 +39,7 @@ class App extends React.Component {
           <SiteHeader />
           <Switch>
             <Route path="/login" component={Login} />
-            <Route exact path="/members/:serverName/:memberName" component={Member} />
             <Route path="/members" component={Members} />
-            <Route path="/ahead-of-the-curve" component={AheadOfTheCurve} />
           </Switch>
         </div>
       </Router>

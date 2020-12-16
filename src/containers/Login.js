@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 import { Button, Segment, Grid } from 'semantic-ui-react';
 import logo from "../logo.svg";
+import Ironfist from "../core/Ironfist";
+import axios from 'axios';
+import config from "../constants/config";
+
 
 class Login extends React.Component {
   constructor(props, context) {
@@ -11,13 +15,15 @@ class Login extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
     this.between = this.between.bind(this);
+    this.getAccessToken = this.getAccessToken.bind(this);
   }
 
-  getInitialState() {
+  async getInitialState() {
     let bg = this.between(1,5);
+    await this.getAccessToken();
     return {
-      submitted: false,
       background: bg,
+      viewEnabled: false
     }
   }
 
@@ -27,8 +33,34 @@ class Login extends React.Component {
     )
   }
 
-  handleClick(e) {
-    this.props.history.push('/members/');
+  async getAccessToken() {
+    axios.get('https://us.battle.net/oauth/token', {
+      auth: {
+        username: config.client_id,
+        password: config.client_secret
+      },
+      params: {
+        grant_type: 'client_credentials'
+      }
+    } ).then((response) => {
+      if( response.status === 200 ) {
+        sessionStorage.setItem('access_token', response.data.access_token);
+      } else {
+        console.log(response);
+      }
+    });
+  }
+
+  async handleClick(e) {
+    let self = this;
+    await this.getAccessToken();
+    await Ironfist.getIronfistMembers();
+
+    this.setState({loading: true});
+    setTimeout(function() {
+      //self.props.history.push('/members/');
+    }, 1500);
+
   }
 
   render() {
@@ -42,7 +74,7 @@ class Login extends React.Component {
             <Segment stacked>
               <img src={logo} className="login-logo" alt="logo" />
 
-              <Button attached='bottom' content='View the Roster' onClick={this.handleClick} />
+              <Button attached='bottom' content='Load the Roster' onClick={this.handleClick} />
             </Segment>
           </Grid.Column>
         </Grid>
