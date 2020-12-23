@@ -66,7 +66,7 @@ class Members extends React.Component {
               <Table.HeaderCell>Name</Table.HeaderCell>
               <Table.HeaderCell>Item Level</Table.HeaderCell>
               <Table.HeaderCell>Raider.IO Score</Table.HeaderCell>
-              <Table.HeaderCell>Ahead of the Curve</Table.HeaderCell>
+              <Table.HeaderCell>AOTC</Table.HeaderCell>
               <Table.HeaderCell>Necrotic Wake</Table.HeaderCell>
               <Table.HeaderCell>Plaguefall</Table.HeaderCell>
               <Table.HeaderCell>Mists of Tirna Scithe</Table.HeaderCell>
@@ -87,7 +87,7 @@ class Members extends React.Component {
                 <Table.Cell className='member-level'>{Math.ceil(member.raiderio_score)}</Table.Cell>
 
                 <Table.Cell className='member-level'>
-                  Castle Nathria &nbsp; <Icon name='times circle' color='red' />
+                  <Icon name='times circle' color='red' />
                 </Table.Cell>
 
                 <Table.Cell className='member-level'>{member.mythicPlus.NW.upgradeString}{member.mythicPlus.NW.highestKey}</Table.Cell>
