@@ -22,7 +22,6 @@ class App extends React.Component {
   }
 
   async componentWillMount() {
-    Ironfist.createDatabase();
     let token = sessionStorage.getItem("access_token");
 
     if ( token !== null ) {

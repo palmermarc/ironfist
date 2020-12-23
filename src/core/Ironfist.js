@@ -241,53 +241,46 @@ class Ironfist {
     });
   }
 
-  async getIronfistMembers() {
+  getIronfistMembers() {
     let self = this;
-    let trackingRanks = [0, 1, 2, 4, 5];
-    let db = openDatabase(config.database.name, config.database.version, config.database.description, config.database.size);
+    return new Promise((resolve, reject) => {
+      let trackingRanks = [0, 1, 2, 4, 5];
 
-    // Didn't exist, time to get to work!
-    this.get(
-      config.apiLinks.guild.roster,
-      {},
-      function(response) {
-        for (const characterData of response.data.members) {
-          if( trackingRanks.includes(characterData.rank) && characterData.character.level === 60) {
-            console.log(characterData);
-            let character = characterData.character;
-            console.log('Made it in here!');
-            let race = config.races[character.playable_race.id];
-            let characterClass = config.classes[character.playable_class.id].name;
-            let data = [character.id, character.name, character.realm.slug, character.realm.id, character.level, characterClass, race, 0, characterData.rank];
-            console.log(data);
+      // Didn't exist, time to get to work!
+      self.get(
+        config.apiLinks.guild.roster,
+        {},
+        function(response) {
+          let members = [];
 
-            db.transaction(function (tx) {
-              tx.executeSql(
-                'INSERT INTO members (id, name, server, server_id, level, class, race, average_item_level, guild_rank) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                data,
-                function (txt, response) {
-                  console.log(txt);
-                  console.log(response);
-                  //self.getMemberRaiderIO(character.server, character.name);
-                },
-                function (txt, response) {
-                  console.log(txt);
-                  console.log(response);
-                }
-              );
-            });
-          }
+          response.data.members.forEach((memberData) => {
+            let member = {
+              id: memberData.character.id,
+              name: memberData.character.name,
+              server: memberData.character.realm.slug,
+              rank: memberData.rank,
+              level: memberData.character.level,
+              playable_race: config.races[memberData.character.playable_race.id],
+              playable_class: config.classes[memberData.character.playable_class.id],
+            };
+
+            if( member.level === 60 && trackingRanks.includes(member.rank)) {
+              members.push(member);
+            }
+          });
+
+          resolve(members);
         }
-      }
-      ,function (err) {
-        console.log("Error getting records from Ironfist API server: " + err);
-      }
-    );
+        ,function (err) {
+          console.log("Error getting records from Ironfist API server: " + err);
+        }
+      );
+    })
+
   }
 
-  async getMemberRaiderIO(server, name) {
+  getMemberRaiderIO(server, name) {
     let apiurl = "https://raider.io/api/v1/characters/profile?region=us&realm=" + server + "&name=" + name + "&fields=gear,covenant,raid_progression,mythic_plus_scores_by_season:current,mythic_plus_ranks,mythic_plus_recent_runs,mythic_plus_best_runs,mythic_plus_highest_level_runs,mythic_plus_weekly_highest_level_runs,mythic_plus_previous_weekly_highest_level_runs,previous_mythic_plus_ranks,raid_achievement_curve:castle-nathria";
-    console.log(apiurl);
     this.get(
       apiurl,
       {},

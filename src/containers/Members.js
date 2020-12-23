@@ -10,47 +10,16 @@ class Members extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = this.getInitialState();
-    this.loadMembers = this.loadMembers.bind(this);
   }
 
   getInitialState() {
+    let members = sessionStorage.getItem('members');
+    document.title =  'Member List | IRONFIST Members Manager';
     return {
-      members: [],
-      loading: true,
+      members: JSON.parse(members),
+      loading: false,
       niceName: 'Guild Members'
     }
-  }
-
-  componentDidMount() {
-    document.title =  'Member List | IRONFIST Members Manager';
-
-    this.loadMembers();
-  }
-
-  async loadMembers() {
-    console.log('Trying to load members');
-    let db = openDatabase(config.database.name, config.database.version, config.database.description, config.database.size);
-    let self = this;
-    let characters = [];
-    db.transaction(function (tx) {
-      tx.executeSql(
-        'SELECT * FROM members ORDER BY guild_rank DESC',
-        [],
-        function (txt, response) {
-          console.log(txt);
-          console.log(response);
-          for (let i = 0; i < response.rows.length; i++) {
-            characters.push(response.rows.item(i));
-          }
-          console.log(characters);
-
-          self.setState({members: characters, loading: false});
-        },
-        function(txt, response) {
-          console.log(response);
-        }
-      );
-    });
   }
 
   render() {
@@ -78,8 +47,8 @@ class Members extends React.Component {
                   <Link to={'/members/' + member.id}>{member.name} - {member.server}</Link>
                 </Table.Cell>
 
-                <Table.Cell className='member-race'>{member.race}</Table.Cell>
-                <Table.Cell className='member-class'>{member.class}</Table.Cell>
+                <Table.Cell className='member-race'>{member.playable_race}</Table.Cell>
+                <Table.Cell className='member-class'><Image src={member.playable_class.icon} avatar /></Table.Cell>
                 <Table.Cell className='member-level'>{member.average_item_level}</Table.Cell>
               </Table.Row>
             ))}
