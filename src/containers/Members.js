@@ -60,7 +60,7 @@ class Members extends React.Component {
   render() {
     return (
       <div className="wrap fade-in">
-        <Table celled selectable className="members-table">
+        <Table celled striped selectable className="members-table">
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Name</Table.HeaderCell>
