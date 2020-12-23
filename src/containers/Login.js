@@ -119,7 +119,9 @@ class Login extends React.Component {
       });
     })
 
-    self.props.history.push('/members/');
+    setTimeout(function() {
+      self.props.history.push('/members/');
+    }, 1500);
 
   }
 
