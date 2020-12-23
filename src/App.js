@@ -20,15 +20,15 @@ class App extends React.Component {
     let token = sessionStorage.getItem("access_token");
 
     if ( token !== null ) {
-      history.push('/members/');
+      history.push('/ironfist/members');
     } else {
-      history.push('/login/');
+      history.push('/ironfist/login');
     }
   }
 
   render() {
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div className="App">
           <Switch>
             <Route path="/login" component={Login} />
