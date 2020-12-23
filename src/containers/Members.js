@@ -64,7 +64,7 @@ class Members extends React.Component {
             {this.state.members.map((member) => (
               <Table.Row key={'member-' + member.id}>
                 <Table.Cell className='member-name'>
-                  <Image src={member.playable_class.icon} avatar /> {member.name}<br/>{member.server}
+                  <Image src={member.playable_class.icon} avatar /> {member.name}-{member.server.replace('-', ' ')}
                 </Table.Cell>
                 <Table.Cell className='member-level'>{member.item_level}</Table.Cell>
 
