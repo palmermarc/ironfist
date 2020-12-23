@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { createBrowserHistory } from 'history';
 
-import SiteHeader from './containers/SiteHeader';
 import Login from './containers/Login';
 import Members from './containers/Members';
 //import Member from './containers/Member';
@@ -31,7 +30,6 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          <SiteHeader />
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/members" component={Members} />

@@ -75,15 +75,33 @@ class Login extends React.Component {
         realm = realm.toLowerCase();
         realm = realm.replace(' ', '-');
         let memberKey = 'member.' + realm + '.' + memberData.name.toLowerCase();
-        console.log(memberKey);
         let savedMemberData = sessionStorage.getItem(memberKey);
         savedMemberData = JSON.parse(savedMemberData);
-        console.log(savedMemberData);
 
         savedMemberData.achievement_points = memberData.achievement_points;
         savedMemberData.covenant = memberData.covenant.name;
         savedMemberData.renown = memberData.covenant.renown_level;
         savedMemberData.item_level = memberData.gear.item_level_equipped;
+
+        let mythicPlus = {
+          MISTS: { inTime: 0, highestKey: 0 },
+          TOP: { inTime: 0, highestKey: 0 },
+          SD: { inTime: 0, highestKey: 0 },
+          SOA: { inTime: 0, highestKey: 0 },
+          PF: { inTime: 0, highestKey: 0 },
+          NW: { inTime: 0, highestKey: 0 },
+          DOS: { inTime: 0, highestKey: 0 },
+          HOA: { inTime: 0, highestKey: 0 },
+        }
+
+        memberData.mythic_plus_best_runs.forEach((mplusRun) => {
+          mythicPlus[mplusRun.short_name] = {
+            highestKey: mplusRun.mythic_level,
+            inTime: (mplusRun.num_keystone_upgrades === 0 ) ? 0 : 1
+          }
+        })
+
+        savedMemberData.mythicPlus = mythicPlus;
 
         sessionStorage.setItem(memberKey, JSON.stringify(savedMemberData));
       });

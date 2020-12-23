@@ -44,6 +44,21 @@ code {
   }
 }
 
+.site-header {
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 20px;
+  height: 140px;
+  img.App-logo  {
+    height: 100px;
+    width: auto;
+  }
+}
+
+body {
+  background-image: url('https://palmermarc.github.io/ironfist/assets/images/stormwind.jpg');
+}
+
 .login-wrapper {
   background-image: url('/assets/images/stormwind.jpg');
   background-size: cover;
@@ -86,6 +101,10 @@ code {
     color: $blue;
   }
 
+  .ui.stacked.segment {
+    min-height: 100px;
+  }
+
   .ui.stacked.segment:after,
   .ui.stacked.segment:before,
   .ui.stacked.segments:after,
@@ -103,7 +122,7 @@ code {
 }
 
 .wrap {
-  margin: 50px 100px 0 200px;
+  margin: 100px;
 }
 
 .members-table {
