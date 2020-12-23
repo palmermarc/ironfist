@@ -84,20 +84,30 @@ class Login extends React.Component {
         savedMemberData.item_level = memberData.gear.item_level_equipped;
 
         let mythicPlus = {
-          MISTS: { inTime: 0, highestKey: 0 },
-          TOP: { inTime: 0, highestKey: 0 },
-          SD: { inTime: 0, highestKey: 0 },
-          SOA: { inTime: 0, highestKey: 0 },
-          PF: { inTime: 0, highestKey: 0 },
-          NW: { inTime: 0, highestKey: 0 },
-          DOS: { inTime: 0, highestKey: 0 },
-          HOA: { inTime: 0, highestKey: 0 },
+          MISTS: { inTime: 0, highestKey: 0, num_key_upgrades: 0 },
+          TOP: { inTime: 0, highestKey: 0, num_key_upgrades: 0 },
+          SD: { inTime: 0, highestKey: 0, num_key_upgrades: 0 },
+          SOA: { inTime: 0, highestKey: 0, num_key_upgrades: 0 },
+          PF: { inTime: 0, highestKey: 0, num_key_upgrades: 0 },
+          NW: { inTime: 0, highestKey: 0, num_key_upgrades: 0 },
+          DOS: { inTime: 0, highestKey: 0, num_key_upgrades: 0 },
+          HOA: { inTime: 0, highestKey: 0, num_key_upgrades: 0 },
         }
 
         memberData.mythic_plus_best_runs.forEach((mplusRun) => {
+          let upgrade_string = "";
+          if( mplusRun.num_keystone_upgrades === 1) {
+            upgrade_string = "+";
+          } else if( mplusRun.num_keystone_upgrades === 2) {
+            upgrade_string = "++";
+          } else if( mplusRun.num_keystone_upgrades === 3) {
+            upgrade_string = "+++";
+          }
           mythicPlus[mplusRun.short_name] = {
             highestKey: mplusRun.mythic_level,
-            inTime: (mplusRun.num_keystone_upgrades === 0 ) ? 0 : 1
+            inTime: (mplusRun.num_keystone_upgrades === 0 ) ? 0 : 1,
+            upgradeString: upgrade_string,
+            numberKeyUpgrades: mplusRun.num_key_upgrades
           }
         })
 

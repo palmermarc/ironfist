@@ -72,14 +72,14 @@ class Members extends React.Component {
                   Castle Nathria &nbsp; <Icon name='times circle' color='red' />
                 </Table.Cell>
 
-                <Table.Cell className='member-level'>{member.mythicPlus.NW.highestKey}</Table.Cell>
-                <Table.Cell className='member-level'>{member.mythicPlus.PF.highestKey}</Table.Cell>
-                <Table.Cell className='member-level'>{member.mythicPlus.MISTS.highestKey}</Table.Cell>
-                <Table.Cell className='member-level'>{member.mythicPlus.HOA.highestKey}</Table.Cell>
-                <Table.Cell className='member-level'>{member.mythicPlus.DOS.highestKey}</Table.Cell>
-                <Table.Cell className='member-level'>{member.mythicPlus.SD.highestKey}</Table.Cell>
-                <Table.Cell className='member-level'>{member.mythicPlus.SOA.highestKey}</Table.Cell>
-                <Table.Cell className='member-level'>{member.mythicPlus.TOP.highestKey}</Table.Cell>
+                <Table.Cell className='member-level'>{member.mythicPlus.NW.upgradeString}{member.mythicPlus.NW.highestKey}</Table.Cell>
+                <Table.Cell className='member-level'>{member.mythicPlus.PF.upgradeString}{member.mythicPlus.PF.highestKey}</Table.Cell>
+                <Table.Cell className='member-level'>{member.mythicPlus.MISTS.upgradeString}{member.mythicPlus.MISTS.highestKey}</Table.Cell>
+                <Table.Cell className='member-level'>{member.mythicPlus.HOA.upgradeString}{member.mythicPlus.HOA.highestKey}</Table.Cell>
+                <Table.Cell className='member-level'>{member.mythicPlus.DOS.upgradeString}{member.mythicPlus.DOS.highestKey}</Table.Cell>
+                <Table.Cell className='member-level'>{member.mythicPlus.SD.upgradeString}{member.mythicPlus.SD.highestKey}</Table.Cell>
+                <Table.Cell className='member-level'>{member.mythicPlus.SOA.upgradeString}{member.mythicPlus.SOA.highestKey}</Table.Cell>
+                <Table.Cell className='member-level'>{member.mythicPlus.TOP.upgradeString}{member.mythicPlus.TOP.highestKey}</Table.Cell>
               </Table.Row>
             ))}
           </Table.Body>
