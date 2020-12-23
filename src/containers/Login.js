@@ -78,10 +78,13 @@ class Login extends React.Component {
         let savedMemberData = sessionStorage.getItem(memberKey);
         savedMemberData = JSON.parse(savedMemberData);
 
+        console.log(memberData);
+
         savedMemberData.achievement_points = memberData.achievement_points;
         savedMemberData.covenant = memberData.covenant.name;
         savedMemberData.renown = memberData.covenant.renown_level;
         savedMemberData.item_level = memberData.gear.item_level_equipped;
+        savedMemberData.raiderio_score = memberData.mythic_plus_scores_by_season[0].scores.all;
 
         let mythicPlus = {
           MISTS: { inTime: 0, highestKey: 0, num_key_upgrades: 0 },

@@ -65,6 +65,7 @@ class Members extends React.Component {
             <Table.Row>
               <Table.HeaderCell>Name</Table.HeaderCell>
               <Table.HeaderCell>Item Level</Table.HeaderCell>
+              <Table.HeaderCell>Raider.IO Score</Table.HeaderCell>
               <Table.HeaderCell>Ahead of the Curve</Table.HeaderCell>
               <Table.HeaderCell>Necrotic Wake</Table.HeaderCell>
               <Table.HeaderCell>Plaguefall</Table.HeaderCell>
@@ -83,6 +84,7 @@ class Members extends React.Component {
                   <Image src={member.playable_class.icon} avatar /> {member.name}-{member.server.replace('-', ' ')}
                 </Table.Cell>
                 <Table.Cell className='member-level'>{member.item_level}</Table.Cell>
+                <Table.Cell className='member-level'>{Math.ceil(member.raiderio_score)}</Table.Cell>
 
                 <Table.Cell className='member-level'>
                   Castle Nathria &nbsp; <Icon name='times circle' color='red' />
