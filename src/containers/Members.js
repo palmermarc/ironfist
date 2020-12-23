@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Table, Image, Icon } from 'semantic-ui-react';
 
@@ -42,7 +41,6 @@ class Members extends React.Component {
     let sortBy = this.state.sortBy || 'item_level';
 
     members.sort((a,b) => {
-      console.log(sortBy);
       if( a[sortBy] > b[sortBy] ) {
         return -1;
       }
@@ -107,15 +105,4 @@ class Members extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {};
-}
-
-function mapDispatchToProps(dispatch) {
-  return {};
-}
-
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Members));
+export default withRouter(Members);

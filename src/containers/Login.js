@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
 import { Dimmer, Loader, Button, Segment, Grid } from 'semantic-ui-react';
 import logo from "../logo.svg";
@@ -152,15 +151,4 @@ class Login extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {};
-}
-
-function mapDispatchToProps(dispatch) {
-  return {};
-}
-
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login));
+export default withRouter(Login);
