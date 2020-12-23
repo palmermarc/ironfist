@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router'
-import { Header, Loader, Button, Segment, Grid } from 'semantic-ui-react';
+import { Dimmer, Loader, Button, Segment, Grid } from 'semantic-ui-react';
 import logo from "../logo.svg";
 import Ironfist from "../core/Ironfist";
 import axios from 'axios';
 import config from "../constants/config";
-
 
 class Login extends React.Component {
   constructor(props, context) {
@@ -53,29 +52,45 @@ class Login extends React.Component {
         }
       });
     })
-    
   }
 
   async handleClick(e) {
+    let self = this;
+
     this.setState({loading: true});
 
     await this.getAccessToken();
 
+    let memberRequests = [];
     let members = await Ironfist.getIronfistMembers();
     sessionStorage.setItem('members', JSON.stringify(members));
 
-    console.log(members);
-
-    /*
     members.forEach((member) => {
-
-      member.push(Ironfist.getMemberRaiderIO());
+      memberRequests.push(Ironfist.getMemberRaiderIO(member.server, member.name));
     });
-    Promise.all(
-    */
+
+    Promise.all(memberRequests).then((allMemberData) => {
+      allMemberData.forEach((memberData) => {
+        let realm = memberData.realm;
+        realm = realm.toLowerCase();
+        realm = realm.replace(' ', '-');
+        let memberKey = 'member.' + realm + '.' + memberData.name.toLowerCase();
+        console.log(memberKey);
+        let savedMemberData = sessionStorage.getItem(memberKey);
+        savedMemberData = JSON.parse(savedMemberData);
+        console.log(savedMemberData);
+
+        savedMemberData.achievement_points = memberData.achievement_points;
+        savedMemberData.covenant = memberData.covenant.name;
+        savedMemberData.renown = memberData.covenant.renown_level;
+        savedMemberData.item_level = memberData.gear.item_level_equipped;
+
+        sessionStorage.setItem(memberKey, JSON.stringify(savedMemberData));
+      });
+    })
 
     setTimeout(function() {
-      //self.props.history.push('/members/');
+      self.props.history.push('/members/');
     }, 1500);
 
   }
@@ -91,10 +106,9 @@ class Login extends React.Component {
           <Grid.Column style={{ maxWidth: 450 }}>
             <Segment stacked>
               {isLoading ? (
-                <div>
-                  <Loader />
-                  <Header as='h2'>Loading Members</Header>
-                </div>
+                <Dimmer active inverted>
+                  <Loader inverted content='Loading Member Data...' />
+                </Dimmer>
               ) : (
                 <div>
                   <img src={logo} className="login-logo" alt="logo" />

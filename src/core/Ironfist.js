@@ -170,77 +170,6 @@ class Ironfist {
     //browserHistory.push(path);
   }
 
-  getMember(server, character_name) {
-    let member = {};
-    let url = 'https://us.api.blizzard.com/profile/wow/character/' + server + '/' + character_name + '?namespace=profile-us';
-    this.get(url, {}, function(response) {
-
-      member.achievement_points = response.data.achievement_points;
-      member.active_spec = response.data.active_spec.id;
-      member.active_title = response.data.active_title.display_string.en_US.replace('{name}', '');
-      member.average_item_level = response.data.average_item_level;
-      member.playableClass = response.data.character_class.id;
-      member.equipped_item_level = response.data.equipped_item_level;
-      member.id = response.data.id;
-      member.last_login_timestamp = response.data.last_login_timestamp;
-      member.level = response.data.level;
-      member.name = response.data.name;
-      member.race = response.data.race.id;
-
-      return member;
-    });
-    return member;
-  }
-
-  async createDatabase() {
-    let db = openDatabase(config.database.name, config.database.version, config.database.description, config.database.size);
-
-    db.transaction(function (tx) {
-      tx.executeSql(
-        'CREATE TABLE IF NOT EXISTS members (id unique PRIMARY KEY , name, server, server_id INTEGER, level, class INTEGER, race INTEGER, average_item_level INTEGER, guild_rank)',
-        [],
-      );
-      //tx.executeSql( 'TRUNCATE TABLE members');
-
-      //tx.executeSql( 'CREATE TABLE IF NOT EXISTS pvp_ratings (member_id unique, two_v_two, three_v_three, five_v_five)' );
-      //tx.executeSql( 'CREATE TABLE IF NOT EXISTS ahead_of_the_curve (member_id unique, castle_nathria, shadowlands_raid_2, shadowlands_raid_3, shadowlands_raid_4, shadowlands_raid_5' );
-      //tx.executeSql( 'CREATE TABLE IF NOT EXISTS mythic_plus (id unique, member_id, dungeon_name, key_level, did_in_time)' );
-      //tx.executeSql( 'TRUNCATE TABLE pvp_ratings');
-      //tx.executeSql( 'TRUNCATE TABLE ahead_of_the_curve');
-      //tx.executeSql( 'TRUNCATE TABLE mythic_plus');
-    });
-  }
-
-   async saveCharacter(characterData) {
-    let self = this;
-    let character = characterData.character;
-
-    let db = openDatabase(config.database.name, config.database.version, config.database.description, config.database.size);
-
-    db.transaction(function (tx) {
-      console.log(tx);
-      console.log('Made it in here!');
-      let race = config.races[character.playable_race.id];
-      let characterClass = config.classes[character.playable_class.id].name;
-      let data = [character.id, character.name, character.realm.slug, character.realm.id, character.level, characterClass, race, 0, characterData.rank];
-      console.log(data);
-
-      tx.executeSql(
-        'INSERT INTO members (id, name, server, server_id, level, class, race, average_item_level, guild_rank) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-        data,
-        function (txt, response) {
-          console.log(txt);
-          console.log(response);
-          //self.getMemberRaiderIO(character.server, character.name);
-        },
-        function (txt, response) {
-          console.log(txt);
-          console.log(response);
-        }
-      );
-    });
-  }
-
   getIronfistMembers() {
     let self = this;
     return new Promise((resolve, reject) => {
@@ -265,6 +194,8 @@ class Ironfist {
             };
 
             if( member.level === 60 && trackingRanks.includes(member.rank)) {
+              let key = 'member.' + member.server + '.' + member.name;
+              sessionStorage.setItem(key.toLowerCase(), JSON.stringify(member));
               members.push(member);
             }
           });
@@ -280,36 +211,20 @@ class Ironfist {
   }
 
   getMemberRaiderIO(server, name) {
-    let apiurl = "https://raider.io/api/v1/characters/profile?region=us&realm=" + server + "&name=" + name + "&fields=gear,covenant,raid_progression,mythic_plus_scores_by_season:current,mythic_plus_ranks,mythic_plus_recent_runs,mythic_plus_best_runs,mythic_plus_highest_level_runs,mythic_plus_weekly_highest_level_runs,mythic_plus_previous_weekly_highest_level_runs,previous_mythic_plus_ranks,raid_achievement_curve:castle-nathria";
-    this.get(
-      apiurl,
-      {},
-      function(response) {
-        console.log(response);
-      }, function(err) {
-        console.log('Error retrieving raider.io data.');
-      }
-    );
-  }
+    return new Promise((resolve, reject) => {
+      let apiUrl = "https://raider.io/api/v1/characters/profile?region=us&realm=" + server + "&name=" + name + "&fields=gear,covenant,raid_progression,mythic_plus_scores_by_season:current,mythic_plus_ranks,mythic_plus_recent_runs,mythic_plus_best_runs,mythic_plus_highest_level_runs,mythic_plus_weekly_highest_level_runs,mythic_plus_previous_weekly_highest_level_runs,previous_mythic_plus_ranks,raid_achievement_curve:castle-nathria";
+      this.get(
+        apiUrl,
+        {},
+        function (response) {
+          resolve(response.data);
+        },function (err) {
 
-  loadRaiders() {
-    let db = openDatabase(config.database.name, config.database.version, config.database.description, config.database.size);
-    let members = [];
-    db.transaction(function (tx) {
-      tx.executeSql(
-        'SELECT * FROM members ORDER BY guild_rank DESC',
-        [],
-        function (txt, response) {
-          for (let i = 0; i < response.rows.length; i++) {
-            members.push(response.rows.item(i));
-          }
-
-          return members;
-        },
-        function(txt, response) {}
+        }
       );
     });
   }
+
 }
 
 export default new Ironfist();

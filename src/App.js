@@ -1,13 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { connect } from 'react-redux';
-import * as actions from "./_actions/actions.authentication";
-import {bindActionCreators} from "redux";
 import { createBrowserHistory } from 'history';
 
 import SiteHeader from './containers/SiteHeader';
-import Ironfist from './core/Ironfist';
 import Login from './containers/Login';
 import Members from './containers/Members';
 //import Member from './containers/Member';
@@ -46,18 +42,4 @@ class App extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return state;
-}
-
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default App;
