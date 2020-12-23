@@ -1,47 +1,63 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
-import { Dimmer, Loader, Table, Image, Icon } from 'semantic-ui-react';
+import { Table, Image, Icon } from 'semantic-ui-react';
 
 class Members extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = this.getInitialState();
-    this.getMembers = this.getMembers.bind(this);
-  }
-
-  getInitialState() {
-    let members = this.getMembers();
-    document.title =  'Member List | IRONFIST Members Manager';
-    return {
-      members: members,
+    this.state = {
+      members: [],
+      sortBy: 'item_level',
+      sortDirection: 'DESC',
       loading: false,
       niceName: 'Guild Members'
-    }
+    } ;
+
+    this.getMembers = this.getMembers.bind(this);
+    this.updateSortBy = this.updateSortBy.bind(this);
+  }
+
+  componentDidMount() {
+    this.getMembers();
+  }
+
+  updateSortBy(newSortBy) {
+    this.setState({sortBy: newSortBy})
   }
 
   getMembers() {
     let guildRoster = sessionStorage.getItem('members');
-    guildRoster = JSON.parse(guildRoster);
     let members = [];
+
+    guildRoster = JSON.parse(guildRoster);
+
     guildRoster.forEach((member) => {
       let memberKey = 'member.' + member.server + '.' +  member.name.toLowerCase();
       let memberData = sessionStorage.getItem(memberKey);
       memberData = JSON.parse(memberData);
-      members.push(memberData)
-    })
+      members.push(memberData);
+    });
 
-    return members;
+    let sortBy = this.state.sortBy || 'item_level';
+
+    members.sort((a,b) => {
+      console.log(sortBy);
+      if( a[sortBy] > b[sortBy] ) {
+        return -1;
+      }
+
+      if( a[sortBy] < b[sortBy] ) {
+        return 1;
+      }
+
+      return 0;
+    });
+
+    this.setState({members: members})
   }
 
   render() {
-
-    if(this.state.loading)
-      return (
-        <Dimmer active inverted><Loader inverted content='Loading IRONFIST Members' size="massive" /></Dimmer>
-      )
-
     return (
       <div className="wrap fade-in">
         <Table celled selectable className="members-table">
