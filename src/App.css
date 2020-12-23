@@ -26,6 +26,8 @@ code {
 }
 
 .App {
+  background-size: cover;
+  background-attachment: fixed;
   text-align: center;
 }
 .App .ui.menu .item {
@@ -39,24 +41,23 @@ code {
   color: #18194A;
   font-weight: 700;
 }
-
-.site-header {
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
-  padding: 20px;
-  height: 140px;
-}
-.site-header img.App-logo {
-  height: 100px;
-  width: auto;
-}
-
-body {
+.App.bg-1 {
   background-image: url("https://palmermarc.github.io/ironfist/assets/images/stormwind.jpg");
+}
+.App.bg-2 {
+  background-image: url("https://palmermarc.github.io/ironfist/assets/images/shattered-sky.jpg");
+}
+.App.bg-3 {
+  background-image: url("https://palmermarc.github.io/ironfist/assets/images/bolvar.jpg");
+}
+.App.bg-4 {
+  background-image: url("https://palmermarc.github.io/ironfist/assets/images/bolvar-lost.jpg");
+}
+.App.bg-5 {
+  background-image: url("https://palmermarc.github.io/ironfist/assets/images/sylvanas.jpg");
 }
 
 .login-wrapper {
-  background-image: url("/assets/images/stormwind.jpg");
   background-size: cover;
   position: absolute;
   margin: 0 !important;
@@ -64,21 +65,6 @@ body {
   height: 100vh;
   width: 100vw;
   z-index: 999999;
-}
-.login-wrapper.bg-1 {
-  background-image: url("https://palmermarc.github.io/ironfist/assets/images/stormwind.jpg");
-}
-.login-wrapper.bg-2 {
-  background-image: url("https://palmermarc.github.io/ironfist/assets/images/shattered-sky.jpg");
-}
-.login-wrapper.bg-3 {
-  background-image: url("https://palmermarc.github.io/ironfist/assets/images/bolvar.jpg");
-}
-.login-wrapper.bg-4 {
-  background-image: url("https://palmermarc.github.io/ironfist/assets/images/bolvar-lost.jpg");
-}
-.login-wrapper.bg-5 {
-  background-image: url("https://palmermarc.github.io/ironfist/assets/images/sylvanas.jpg");
 }
 .login-wrapper .login-wrapper-overlay {
   width: 100vw;
@@ -110,7 +96,7 @@ body {
 }
 
 .wrap {
-  margin: 100px;
+  padding: 100px;
 }
 
 .members-table .member-name {

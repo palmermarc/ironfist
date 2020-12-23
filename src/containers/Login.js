@@ -78,8 +78,6 @@ class Login extends React.Component {
         let savedMemberData = sessionStorage.getItem(memberKey);
         savedMemberData = JSON.parse(savedMemberData);
 
-        console.log(memberData);
-
         savedMemberData.achievement_points = memberData.achievement_points;
         savedMemberData.covenant = memberData.covenant.name;
         savedMemberData.renown = memberData.covenant.renown_level;
