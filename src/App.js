@@ -12,10 +12,6 @@ const history = createBrowserHistory();
 class App extends React.Component {
   constructor(props, context) {
     super(props);
-  }
-
-  componentWillMount() {
-    this.setState({background: (Math.floor(Math.random() * 5) + 1)});
 
     let token = sessionStorage.getItem("access_token");
 
@@ -27,7 +23,8 @@ class App extends React.Component {
   }
 
   render() {
-    let bodyClass = 'App bg-' + this.state.background;
+    let background = Math.floor(Math.random() * 5) + 1;
+    let bodyClass = 'App bg-' + background;
     return (
       <Router basename={process.env.PUBLIC_URL}>
         <div className={bodyClass}>

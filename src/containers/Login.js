@@ -18,9 +18,7 @@ class Login extends React.Component {
   }
 
   async getInitialState() {
-    let bg = this.between(1,5);
     return {
-      background: bg,
       loading: false,
       viewEnabled: false
     }
@@ -47,7 +45,6 @@ class Login extends React.Component {
           sessionStorage.setItem('access_token', response.data.access_token);
           resolve(response.data);
         } else {
-          console.log(response);
           reject(response);
         }
       });
@@ -127,7 +124,7 @@ class Login extends React.Component {
   }
 
   render() {
-    let bodyClass = 'login-wrapper wrap fade-in bg-' + this.state.background;
+    let bodyClass = 'login-wrapper wrap fade-in';
     let isLoading = this.state.loading;
 
     return (
