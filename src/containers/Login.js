@@ -96,6 +96,7 @@ class Login extends React.Component {
 
         memberData.mythic_plus_best_runs.forEach((mplusRun) => {
           let upgrade_string = "";
+
           if( mplusRun.num_keystone_upgrades === 1) {
             upgrade_string = "+";
           } else if( mplusRun.num_keystone_upgrades === 2) {
@@ -103,13 +104,14 @@ class Login extends React.Component {
           } else if( mplusRun.num_keystone_upgrades === 3) {
             upgrade_string = "+++";
           }
+
           mythicPlus[mplusRun.short_name] = {
             highestKey: mplusRun.mythic_level,
             inTime: (mplusRun.num_keystone_upgrades === 0 ) ? 0 : 1,
             upgradeString: upgrade_string,
             numberKeyUpgrades: mplusRun.num_key_upgrades
           }
-        })
+        });
 
         savedMemberData.mythicPlus = mythicPlus;
 
@@ -117,9 +119,7 @@ class Login extends React.Component {
       });
     })
 
-    setTimeout(function() {
-      self.props.history.push('/members/');
-    }, 1500);
+    self.props.history.push('/members/');
 
   }
 
