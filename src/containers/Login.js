@@ -119,7 +119,6 @@ class Login extends React.Component {
     setTimeout(function() {
       self.props.history.push('/members/');
     }, 1500);
-
   }
 
   render() {

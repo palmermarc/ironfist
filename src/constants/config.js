@@ -4,12 +4,6 @@ const config = {
   version: '3.0.0 BETA',
   client_id: '96adc66832024326b62b6cf276723411',
   client_secret: 'P3l9YKt6hhQr5HAcTXlWmBfL6DlHQdeI',
-  database: {
-    name: 'ironfist',
-    version: '1.0',
-    description: 'IRONFIST database to hold all of the character data',
-    size: 2097152
-  },
   apiLinks: {
     guild: {
       roster: 'https://us.api.blizzard.com/data/wow/guild/burning-legion/ironfist/roster?namespace=profile-us',
