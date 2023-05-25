@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["jsonProtocol"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING") // used for migrations
+}
+
+model Character {
+  id                      String @id
+  name                    String
+  realm                   String
+  gender                  String
+  faction                 String
+  race                    String
+  class                   String
+  active_spec             String
+  level                   String
+  experience              String
+  achievement_points      String
+  average_item_level      String
+  equipped_item_level     String
+  is_raider               Boolean @default(false)
+  raid_role               String
+  mythic_score            String
+  last_login_timestamp    String
+}
